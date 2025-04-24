@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бри - Доставка еды</title>
+    <link rel="stylesheet" href="{% static "css/cart.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        Бри - Доставка еды
+    </header>
+
+    <nav>
+        <a href="{% url "main:catalogue" %}">Каталог</a>
+        <a href="{% url "main:about" %}">О нас</a>
+        <a href="{% url "main:contacts" %}">Контакты</a>
+        <a href="{% url "main:cart" %}" class="cart-link">
+            <i class="fas fa-shopping-cart"></i> 
+        </a>
+    </nav>
+
+
+  <div class="container">
+    <h2 style="text-align: center;">Ваша корзина</h2>
+    <div class="cart-wrapper">
+      {% for item in cart_items %}
+      <div class="cart-item">
+        <div class="item-info">
+          <p><strong>{{ item.product.name }}</strong></p>
+          <p>Количество: {{ item.quantity }}</p>
+          <p><strong>Цена:</strong> {{ item.subtotal }} руб</p>
+        </div>
+        <div class="item-actions">
+            <form method="POST" action="{% url 'main:update_cart' item.product.id %}">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                <button type="submit" name="action" value="update">Обновить</button>
+                <button type="submit" name="quantity" value="0">Удалить</button>
+            </form>
+        </div>
+      </div>
+
+      {% empty %}
+      <p> Ваша корзина пустая </p>
+      {% endfor %}
+      <div class="order-summary">
+        <p><strong>Всего:</strong> {{ total }} руб </p>
+        <a href="{% url "main:checkout" %}"><button class="button">Оформить заказ</button></a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Бри - Доставка еды</p>
+</footer>
+
+</body>
+</html>

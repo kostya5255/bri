@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бри - Доставка еды</title>
+    <link rel="stylesheet" href="{% static "css/checkout.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>Бри - Доставка еды</header>
+  <nav>
+    <a href="{% url "main:catalogue" %}">Каталог</a>
+    <a href="{% url "main:about" %}">О нас</a>
+    <a href="{% url "main:contacts" %}">Контакты</a>
+    <a href="{% url "main:cart" %}" class="cart-link">
+        <i class="fas fa-shopping-cart"></i> 
+    </a>
+</nav>
+
+<div class="container">
+    <h2 style="text-align: center;">Оформление</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Номер телефона:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="address">Адрес:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <h3>Товары в вашей корзине:</h3>
+        <ul>
+            {% for item in cart_items %}
+                <li>{{ item.product.name }} x{{ item.quantity }} — {{ item.subtotal }} руб.</li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Общая сумма:</strong> {{ total }} руб</p>
+
+        <button type="submit">Оформить</button>
+    </form>
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 Бри - Доставка еды</p>
+  </footer>
+
+
+</body>
+</html>

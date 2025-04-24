@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бри - Доставка еды</title>
+    <link rel="stylesheet" href="{% static "css/catalogue.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        Бри - Доставка еды
+    </header>
+
+    <nav>
+        <a href="{% url "main:catalogue" %}">Каталог</a>
+        <a href="{% url "main:about" %}">О нас</a>
+        <a href="{% url "main:contacts" %}">Контакты</a>
+        <a href="{% url "main:cart" %}" class="cart-link">
+            <i class="fas fa-shopping-cart"></i> 
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="catalogue-wrapper">
+            
+            {% for product in products %}
+            
+            <div class="food-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="food-info">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p class="price">{{ product.price }} руб.</p>
+                    <form method="POST" action="{% url 'main:add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Добавить в корзину 🛒</button>
+                    </form>
+                </div>
+            </div>
+
+            {% endfor %}
+            
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Бри - Доставка еды</p>
+    </footer>
+
+</body>
+</html>

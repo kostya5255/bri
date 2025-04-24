@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Бри - Доставка еды</title>
+    <link rel="stylesheet" href="{% static "css/contacts.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class='page-wrapper'>
+        <header>
+            Бри - Доставка еды
+        </header>
+
+        <nav>
+            <a href="{% url "main:catalogue" %}">Каталог</a>
+            <a href="{% url "main:about" %}">О нас</a>
+            <a href="{% url "main:contacts" %}">Контакты</a>
+            <a href="{% url "main:cart" %}" class="cart-link">
+                <i class="fas fa-shopping-cart"></i> 
+            </a>
+        </nav>
+
+        <div class="container">
+            <h2>Контакты</h2>
+            <p><strong>По всем вопросам звоните:</strong> +7 (495) 123-45-67</p>
+            <p><strong>Адрес:</strong> г Кириши, Волховская наб, д. 44</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1856.4537131853913!2d32.0039981!3d59.44803269999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46bc52173227e655%3A0xa5e1532d9ade7f7a!2z0JLQvtC70YXQvtCy0YHQutCw0Y8g0L3QsNCxLiwgNDQsINCa0LjRgNC40YjQuCwg0JvQtdC90LjQvdCz0YDQsNC00YHQutCw0Y8g0L7QsdC7Liwg0KDQvtGB0YHQuNGPLCAxODcxMTA!5e1!3m2!1sru!2sus!4v1744926466463!5m2!1sru!2sus"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Бри - Доставка еды</p>
+        </footer>
+    </div>
+
+</body>
+</html>

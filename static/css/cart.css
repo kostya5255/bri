@@ -1,0 +1,137 @@
+/* Cart page styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #ff6600;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  nav {
+    background-color: #333;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.1rem;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  .cart-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cart-item {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cart-item .item-info {
+    flex: 1;
+  }
+  
+  .cart-item .item-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .cart-item input {
+    width: 50px;
+    padding: 0.25rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .cart-item button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cart-item button:hover {
+    background-color: #e65c00;
+  }
+  
+  .order-summary {
+    text-align: right;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+  }
+  
+  .order-summary p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .order-summary .button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .order-summary .button:hover {
+    background-color: #e65c00;
+  }
+  
+  @media (max-width: 768px) {
+    .cart-wrapper {
+      padding: 1rem;
+    }
+    .cart-item {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }

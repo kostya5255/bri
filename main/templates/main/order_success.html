@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бри - Доставка еды</title>
+    <link rel="stylesheet" href="{% static "css/order_success.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>Бри - Доставка еды</header>
+  <nav>
+    <a href="{% url "main:catalogue" %}">Каталог</a>
+    <a href="{% url "main:about" %}">О нас</a>
+    <a href="{% url "main:contacts" %}">Контакты</a>
+    <a href="{% url "main:cart" %}" class="cart-link">
+        <i class="fas fa-shopping-cart"></i> 
+    </a>
+</nav>
+
+<div class="container">
+  <h2 style="text-align: center;">Спасибо за ваш заказ!</h2>
+  <p>Ваш заказ был успешно оформлен.</p>
+  <p>Мы свяжемся с вами по телефону {{ order.phone }}.</p>
+
+  <h3>Ваши заказанные товары:</h3>
+  <ul>
+      {% for item in cart_items %}
+          <li>{{ item.name }} x {{ item.quantity }} — {{ item.subtotal }} руб</li>
+      {% endfor %}
+  </ul>
+
+  <p><strong>Общая сумма:</strong> {{ total }} руб.</p>
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 Бри - Доставка еды</p>
+  </footer>
+
+
+</body>
+</html>
