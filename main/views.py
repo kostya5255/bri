@@ -5,7 +5,7 @@ from .forms import OrderForm
 from .models import Order, Product
 import json
 
-
+#Коммитим не палимся
 def catalogue(request):
     products = Product.objects.all()
     return render(request, "main/catalogue.html", {"products": products})
